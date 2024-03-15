@@ -1,0 +1,27 @@
+Volumes in Docker
+
+You can share volumes between host to container , 
+container to container and container to host.
+
+Disadvantages:
+
+Even though container stopped , one can access volumes in different container or local directory.
+
+You can only declare volumes while creating container and shared same time.
+You can not create volume using existing container.
+you can share one volumes with any number of containers
+
+Volume wont b part of image commit and push to repository
+
+
+Commands
+
+Step1 : create volume using Dockerfile or while running container
+#Using container
+docker run -it --name container_name -v volume_name:/path/in/container my_image
+
+Step2 : docker run -it --name container2 --privileged=true --volumes-from container1 image_name /bin/bash
+
+To copy data from container to local machine
+
+docker cp container_name:/path/to/container/volume ./local/file/path
